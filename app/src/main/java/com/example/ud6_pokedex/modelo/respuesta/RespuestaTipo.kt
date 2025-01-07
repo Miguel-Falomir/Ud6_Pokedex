@@ -4,7 +4,7 @@ import com.example.ud6_pokedex.modelo.objeto.Link
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// CLASE RESPUESTA POKEMON //////////////////////////////////////////
+// CLASE RESPUESTA TIPO /////////////////////////////////////////////
 /**
  * Contiene todos los atributos de la busqueda:
  * <> Cantidad total de objetos
@@ -13,7 +13,7 @@ import kotlinx.serialization.Serializable
  */
 
 @Serializable
-data class RespuestaPokemon(
+data class RespuestaTipo(
     @SerialName(value = "count")
     val total: Int,
     @SerialName(value = "next")
