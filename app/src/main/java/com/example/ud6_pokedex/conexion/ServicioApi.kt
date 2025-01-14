@@ -1,7 +1,9 @@
 package com.example.ud6_pokedex.conexion
 
 import com.example.ud6_pokedex.modelo.objeto.Pokemon
+import com.example.ud6_pokedex.modelo.objeto.TipoPokemon
 import com.example.ud6_pokedex.modelo.respuesta.RespuestaPokemon
+import com.example.ud6_pokedex.modelo.respuesta.RespuestaTipo
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -29,4 +31,15 @@ interface ServicioApi {
     suspend fun getPokemonData(
         @Path("id") id: Int
     ): Pokemon
+
+    @GET("type")
+    suspend fun getTypeList(
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int
+    ): RespuestaTipo
+
+    @GET("type/{id}")
+    suspend fun getTypeData(
+        @Path("id") id: Int
+    ): TipoPokemon
 }
