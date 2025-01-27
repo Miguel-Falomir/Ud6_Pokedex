@@ -20,6 +20,6 @@ interface PokemonRepo_Interfaz {
 class PokemonRepo_Conexion (
     private val _servicioApi: ServicioApi
 ): PokemonRepo_Interfaz {
-    override suspend fun obtenerListaPokemon(): RespuestaPokemon = _servicioApi.getPokemonList(0,10)
+    override suspend fun obtenerListaPokemon(): RespuestaPokemon = _servicioApi.getPokemonList(offset = 0,limit = 30)
     override suspend fun seleccionarPokemon(): Pokemon = _servicioApi.getPokemonData(0)
 }

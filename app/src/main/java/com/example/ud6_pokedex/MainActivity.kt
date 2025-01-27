@@ -5,8 +5,10 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -16,6 +18,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.ud6_pokedex.pantallas.AppTopBar
+import com.example.ud6_pokedex.pantallas.PantallaListaPokemones
 import com.example.ud6_pokedex.ui.theme.Ud6_PokedexTheme
 import com.example.ud6_pokedex.ui.viewmodel.MainViewModel
 
@@ -66,7 +70,12 @@ fun Navegador(
 
     Scaffold (
         topBar = {
-
+            AppTopBar(
+                pantallaActual = pantallaActual,
+                puedeNavegarAtras = _navController.previousBackStackEntry != null,
+                onNavegarAtras = {_navController.navigateUp()},
+                modifier = Modifier
+            )
         }
     ){ innerPadding ->
         val uisPokemon = _viewModel.UIS_Pokemon
@@ -78,7 +87,7 @@ fun Navegador(
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = listaPantallas.Inicio.name){
-
+                PantallaListaPokemones(uisPokemon, Modifier.fillMaxSize())
             }
             composable(route = listaPantallas.Pokemones.name){
 
